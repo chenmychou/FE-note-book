@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <video id="video" controls="controls"><source src="1.mp4"></video>
+    <img id="output" src='' >
+    <canvas id="canvas"></canvas>
+    <!-- <div id="output"><img src="" id='img' alt=""></div> -->
+    <script type="text/javascript">
+        (function(){
+        var video, output, canvas;
+        var scale = 0.8;
+        var initialize = function() {
+        output = document.getElementById("output");
+        canvas = document.getElementById("canvas");
+        video = document.getElementById("video");
+        video.addEventListener('canplaythrough',captureImage);
+        };
+            
+        var captureImage = function() {
+                    canvas.width = video.videoWidth * scale;
+                    canvas.height = video.videoHeight * scale;
+                    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                    output.setAttribute("crossOrigin",'Anonymous')
+                    output.src = canvas.toDataURL("image/png");
+        };
+            
+        initialize();
+        })();
+
+        // var video = document.getElementById('video');
+        // var canvas = document.createElement("canvas");
+        // canvas.width = video.videoWidth * 0.8;
+        // canvas.height = video.videoHeight * 0.8;
+        // // var canvas = document.getElementById('canvas');
+
+        // var ctx = canvas.getContext('2d');
+
+        // var img = document.getElementById('img');
+
+        // function snapshot() {
+        //     ctx.drawImage(video,0,0,canvas.width, canvas.height);
+        //     img.src =  canvas.toDataURL('image/png');
+        //     console.log('========', canvas.toDataURL('image/png'))
+        // }
+
+        // video.addEventListener('click', snapshot, false);
+    </script>
+</body>
+</html>
