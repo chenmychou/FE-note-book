@@ -1,14 +1,16 @@
 const Router = require('koa-router')
 const router = new Router()
 const user_model = require('../model/user_model')
+import clientPromise from '../redis/client'
 router.prefix('/api/v1/userInfo')
 router.get('/', async(ctx, next) => {
-    console.log('get!', ctx.request.query)
-    ctx.body = '您所在的位置是查询系统首页'
+    let datalist = await clientPromise('newlist')
+    ctx.body = '您所在的位置是查询系统首页' + datalist
 })
 router.post('/', async(ctx, next) => {
     console.log('post!', ctx.request.body)
     ctx.body = '您所在的位置是查询系统首页'
+    
 })
 router.post('/addUser', async(ctx, next) => {
     let Name = ctx.request.body.Name
