@@ -6,14 +6,11 @@ const mongoose = require('mongoose')
 const redis = require('redis')
 const client = redis.createClient()
 const app = new Koa()
-<<<<<<< HEAD
 mongoose.set('useNewUrlParser', true); 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true); // v5.4.13
 mongoose.connect(config.dataBase, {useNewUrlParser: true}, (err, db) => {
-=======
 mongoose.connect(config.dataBase, {useNewUrlParser: true, useCreateIndex: true}, (err, db) => {
->>>>>>> 3811a7220ac0c6b9c7dc3c7ca28b17d34692aec3
     if (err) return console.log(err)
     console.log('数据库连接')
 })
