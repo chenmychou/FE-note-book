@@ -1,4 +1,4 @@
 require('babel-register')({
-    presets: ['es2015', 'babel-polyfill']
+    presets: ['env', 'babel-polyfill']
 })
 module.exports = require('./index')
