@@ -42,12 +42,9 @@ module.exports = {
   devServer: {
    proxy: {
     '/api': {
-     target: '<url>',
+     target: 'http://api.zouzhengming.com',
      ws: true,
      changeOrigin: true
-    },
-    '/foo': {
-     target: '<other_url>'
     }
    }
   }

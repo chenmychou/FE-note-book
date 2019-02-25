@@ -1,14 +1,17 @@
-#app{
-    // background: $theme-color;
+#mainIndex{
+    // background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    // padding: 15px 0;
     .app_index{
         text-align: center;
         .new_title{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 24px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 30px;
+            color: #c51616;
             margin-bottom: 60px;
-        }
-        .cover_pic_1{
-            background-image:  url(./images/haze.png);
         }
         .common_css {
             width: 100%;
@@ -18,12 +21,24 @@
             background-repeat: no-repeat; 
             background-size: cover;
             background-position:center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .cover_pic_1{
+            background-image: url(../assets/images/haze.png);
         }
         .cover_pic_2{
-            background-image:  url(./images/overcast.png);
+            background-image: url(../assets/images/overcast.png);
         }
         .cover_pic_3{
-            background-image:  url(./images/snow.png);
+            background-image: url(../assets/images/sunny.png);
+        }
+        ._title{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 28px;
+            margin-left: 26px;
+            color: whitesmoke;
         }
     }
 }
