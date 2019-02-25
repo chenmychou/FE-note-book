@@ -12,3 +12,43 @@ module.exports = {
     }
   }
 }
+module.exports = {
+  chainWebpack: config => {
+   config.module
+    .rule('scss')
+    .use('sass-loader')
+    .tap(options =>
+     merge(options, {
+      includePaths: [path.resolve(dirname, 'node_modules')],
+     })
+    )
+  }
+ }
+module.exports = {
+  // ...
+  css: {
+    extract: true,
+    modules: true,
+    loaderOptions: {
+      sass: {
+        data: `
+          @import "@/assets/styles/_variable.scss";
+        `
+      }
+    }
+  }
+}
+module.exports = {
+  devServer: {
+   proxy: {
+    '/api': {
+     target: '<url>',
+     ws: true,
+     changeOrigin: true
+    },
+    '/foo': {
+     target: '<other_url>'
+    }
+   }
+  }
+ }

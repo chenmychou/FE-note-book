@@ -6,10 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
-    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./utiil.js"></script>
+
 </head>
 <body>
+    <div style="margin: 20px 0">
+        用户查询
+        <div>
+            <input id='name' type="text">
+            <button onclick="findUser()">查询</button>
+        </div>
+        
+    </div>
+    <div>
+        用户增加
+        <div>
+            用户名：<input id='userName' type="text">
+            身份证号： <input id="idCard" type="text">
+        </div>
+        <button onclick="addUser()">新增</button>
+    </div>
+    <div id="content">
+    </div>
+    <script>
+        var content = document.getElementById('content')
+        const url = "/api/v1/userInfo/"
+        function findUser() {
+            content.innerHTML = ''
+            var name = document.getElementById('name').value
+            axios.get(url + 'findUser?Name=' + name).then(res => {
+                let data = res.data.data
+                data.forEach(ele => {
+                    content.innerHTML += ('<div>所在地：'+ ele.Address +'</div><div>民族：'+ ele.Nation +'</div><div>注册时间：'+ ele.Version +'</div><div style="margin-bottom: 20px">身份证号：'+ ele.CtfId +'</div>')
+                });
+            })
+        }
+        function addUser(){
+            var userName = document.getElementById('userName').value
+            var idCard = document.getElementById('idCard').value
+            axios.post(url + 'addUser', {Name: userName, CtfId: idCard}).then(res => {
+                console.log('addUser==>>', res)                
+            })
+
+        }
+        
+    </script>
 </body>
 </html>
