@@ -4,28 +4,27 @@
       <van-cell-group>
         <van-field
           v-model="ciYu"
-          required
           clearable
-          label="汉字："
+          label="汉字:"
           placeholder="请输入需要查找的汉字"
         />
         <van-field
           v-model="xiehouyu"
-          label="歇后语"
+          clearable
+          label="歇后语:"
           placeholder="请输入需要查找的歇后语"
-          required
         />
         <van-field
           v-model="word"
-          label="词语"
+          clearable
+          label="词语:"
           placeholder="请输入需要查找的词语"
-          required
         />
         <van-field
           v-model="idiom"
-          label="成语"
+          clearable
+          label="成语:"
           placeholder="请输入需要查找的成语"
-          required
         />
       </van-cell-group>
     </div>
