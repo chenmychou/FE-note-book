@@ -29,7 +29,7 @@
       <van-button style="width:90%" type="primary" size="large" @click="search()">搜索</van-button>
     </div>
     <div class="list_container" style="width:90%">
-      <div style="width: 90%;font-size: 18px">
+      <div style="font-size: 10px;margin-left: 30px">
         有关{{curWord}}的内容如下：
       </div>
       <van-collapse v-model="activeName" accordion>
@@ -57,43 +57,32 @@ export default {
       xiehouyu: '',
       word: '',
       idiom: '',
-      activeName: 1,
+      activeName: 0,
       queryName: Number(this.$route.query.id),
       dataList: [],
-      curWord: '',
-      // nameMap: {
-      //   1: 'chengyu',
-      //   2: 'xiehouyu',
-      //   3: 'ciyu'
-      // }
+      curWord: ""
     }
   },
   created() {
-    // this.queryName = this.$route.query
-    // this.initData()
   },
   methods: {
-    // async initData () {
-    //   let data = await axios.get('/api/v1/checkIdiom/find?word=我')
-    //   this.dataList = data.data.data
-    // },
-    // changeSearch(e) {
-    //   console.log(e)
-    // },
     async search () {
       let queryName = this.queryName
       if (queryName === 1) { // 成语
         let word = this.idiom
+        this.curWord = word
         let data = await axios.get('/api/v1/checkIdiom/find?word='+word)
         this.dataList = data.data.data
       }
       if (queryName === 3) { // 词语
         let word = this.word
+        this.curWord = word
         let data = await axios.get('/api/v1/checkCiYu/find?word='+word)
         this.dataList = data.data.data
       }
       if (queryName === 2) { // xiehouyu
         let ci = this.word
+        this.curWord = ci
         let data = await axios.get('/api/v1/checkxiehouyu/find?ci='+ci)
         this.dataList = data.data.data
       }
