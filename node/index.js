@@ -9,8 +9,8 @@ const app = new Koa()
 mongoose.set('useNewUrlParser', true); 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true); // v5.4.13
-mongoose.connect(config.dataBase, {useNewUrlParser: true}, (err, db) => {
-mongoose.connect(config.dataBase, {useNewUrlParser: true, useCreateIndex: true}, (err, db) => {
+// mongoose.connect(config.dataBase, {useNewUrlParser: true}, (err, db) => {
+mongoose.connect(config.dataBase, (err, db) => {
     if (err) return console.log(err)
     console.log('数据库连接')
 })
@@ -42,4 +42,4 @@ app.use(xiehouyu_routers.routes()).use(xiehouyu_routers.allowedMethods())
 
 
 app.listen(config.port)
-console.log('服务启动在 http://localhost:' + config.port)
+console.log('服务启动在 http://localhost:'+config.port)

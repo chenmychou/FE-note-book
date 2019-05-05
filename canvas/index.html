@@ -16,18 +16,19 @@
         var video, output, canvas;
         var scale = 0.8;
         var initialize = function() {
-        output = document.getElementById("output");
-        canvas = document.getElementById("canvas");
-        video = document.getElementById("video");
-        video.addEventListener('canplaythrough',captureImage);
+            output = document.getElementById("output");
+            output.setAttribute("crossOrigin",'Anonymous')
+            canvas = document.getElementById("canvas");
+            video = document.getElementById("video");
+            video.addEventListener('loadeddata',captureImage);
         };
             
         var captureImage = function() {
-                    canvas.width = video.videoWidth * scale;
-                    canvas.height = video.videoHeight * scale;
-                    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-                    output.setAttribute("crossOrigin",'Anonymous')
-                    output.src = canvas.toDataURL("image/png");
+            canvas.width = video.videoWidth * scale;
+            canvas.height = video.videoHeight * scale;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            output.src = canvas.toDataURL("image/png");
         };
             
         initialize();

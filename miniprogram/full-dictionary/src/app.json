@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/chengyu/main",
+    "pages/xiehouyu/main",
+    "pages/aboutUs/main",
+    "pages/detail/main"
+  ],
+  "window": {
+    "defaultTitle": "字词句大典"
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+
+    "items": [{
+      "name": "词语",
+      "pagePath": "pages/index/main",
+      "icon": "static/tabs/ciyu.png",
+      "activeIcon": "static/tabs/ciyu-active.png"
+    }, {
+      "name": "成语",
+      "pagePath": "pages/chengyu/main",
+      "icon": "static/tabs/chengyu.png",
+      "activeIcon": "static/tabs/chengyu-active.png"
+    }, {
+      "name": "歇后语",
+      "pagePath": "pages/xiehouyu/main",
+      "icon": "static/tabs/xiehouyu.png",
+      "activeIcon": "static/tabs/xiehouyu-active.png"
+    }, {
+      "name": "关于我们",
+      "pagePath": "pages/aboutUs/main",
+      "icon": "static/tabs/aboutUs.png",
+      "activeIcon": "static/tabs/aboutUs-active.png"
+    }],
+    "position": "bottom"
+  }
+}
