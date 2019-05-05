@@ -1,8 +1,8 @@
 <template>
   <div class="index_pages">
-    <div class="chatu_box">
-      <img class="chatu_image" src="../../../static/images/jianchi.png" alt="">
-    </div>
+    <!-- <div class="chatu_box">
+      <img class="chatu_image" src="../../../static/images/jianchi.jpg" alt="">
+    </div> -->
     <div class="find_word_feild">
       <button class="word_search" @click="goToDetail()">开启词海之旅</button>
     </div>
