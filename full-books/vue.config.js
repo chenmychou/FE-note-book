@@ -25,10 +25,11 @@ module.exports = {
   }
  }
 module.exports = {
-  // ...
+  cssPreprocessor: 'sass',
   css: {
-    extract: true,
+    extract: process.env.NODE_ENV === 'production',
     modules: true,
+    sourceMap: true,
     loaderOptions: {
       sass: {
         data: `
