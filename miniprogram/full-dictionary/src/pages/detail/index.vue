@@ -1,7 +1,7 @@
 <template>
   <div class="detail_pages">
     <div class="find_word_feild">
-      <input class="word_search" type="text" placeholder="输入词语">
+      <input class="word_search" type="text" placeholder="输入词语" v-model="searchContent">
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@
 export default {
   data () {
     return {
+      searchContent: ''
     }
   },
 
