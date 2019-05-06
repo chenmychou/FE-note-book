@@ -1,43 +1,75 @@
 <template>
-  <div>
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-      <block v-for="(item, index) in imgUrls" :key="index" >
-        <swiper-item>
-          <image :src="item" mode="scaleToFill"></image>
-        </swiper-item>
-      </block>
-    </swiper>
+  <div class="index_pages">
+    <div class="find_word_feild">
+      <button class="word_search" @click="goToDetail()">开启成语之旅</button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  components: {
-  },
 
+export default {
   data () {
     return {
-      imgUrls: [
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/newsPicture/05558951-de60-49fb-b674-dd906c8897a6',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/coursePicture/0fbcfdf7-0040-4692-8f84-78bb21f3395d',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870'
-      ]
     }
   },
 
+  components: {
+  },
+
+  methods: {
+    goToDetail () {
+      my.navigateTo({
+        url: '../detail/main?id=2'
+      })
+    }
+  },
+  // onShow () {
+  //   this.request.get('/api/v1/checkIdiom/find?word=2').then(res => {
+  //     console.log('res===>>', res)
+  //   })
+  // },
+
   created () {
+    // let app = getApp()
   }
 }
 </script>
 
-<style>
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
-}
-
-.log-item {
-  margin: 10rpx;
-}
+<style scoped>
+  .index_pages{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url('../../../static/images/zaobitouguang.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .chatu_box{
+    margin-top: 50px
+  }
+  .chatu_image{
+    width: 100px;
+    height: 70px;
+  }
+  .find_word_feild{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .word_search{
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    color: rgb(56, 54, 52);
+    font-weight: 900;
+    border-radius: 20px;
+    text-shadow: 5px 5px 5px rgb(56, 54, 52);
+    box-shadow: 5px 5px 5px #D7BCA8;
+    background:-webkit-linear-gradient(left,red,yellow,green);
+  }
+  
 </style>
