@@ -31,6 +31,9 @@
        <div class="_item_explanation">{{item.answer}}</div>
      </div>
     </div>
+    <div class="no_data" v-if="dataList.length === 0">
+      暂无数据
+    </div>
   </div>
 </template>
 <script>
@@ -40,9 +43,9 @@ export default {
       searchContent: '',
       dataList: [],
       tabIndex: 1,
-      ciyuUrl: '/api/v1/checkCiYu/find?ciYu=',
-      xiehouyuUrl: '/api/v1/checkxiehouyu/find?riddle=',
-      chengyuUrl: '/api/v1/checkIdiom/find?word='
+      ciyuUrl: 'https://api.zouzhengming.com/api/v1/checkCiYu/find?ciYu=',
+      xiehouyuUrl: 'https://api.zouzhengming.com/api/v1/checkxiehouyu/find?riddle=',
+      chengyuUrl: 'https://api.zouzhengming.com/api/v1/checkIdiom/find?word='
     }
   },
 
@@ -51,6 +54,7 @@ export default {
 
   methods: {
     getListData () {
+      let that = this
       let id = Number(this.$mp.query.id)
       this.tabIndex = id
       let curUrl = ''
@@ -64,8 +68,27 @@ export default {
         curUrl = this.xiehouyuUrl
       }
       let word = encodeURIComponent(this.searchContent)
-      this.request.get(curUrl + word).then(res => {
-        this.dataList = res.data
+      my.request({
+        url: curUrl + word,
+        method: 'get',
+        dataType: 'json',
+        headers: {'content-type': 'application/json'},
+        success: function (res) {
+          that.dataList = res.data.data
+          // my.alert({content: 'success'})
+        },
+        fail: function (res) {
+          my.showToast({
+            content: '服务器异常，请稍后重试',
+            type: 'fail',
+            duration: 2000
+          })
+        },
+        complete: function (res) {
+          // console.log('completesres===>>>>', res)
+          my.hideLoading()
+          // my.alert({content: 'complete'})
+        }
       })
     }
   },
@@ -127,5 +150,11 @@ export default {
   ._item_explanation {
     font-size: 14px;
     color: #000;
+  }
+  .no_data{
+    padding: 14px 16px;
+    font-size: 18px;
+    color: #333;
+    line-height: 24px;
   }
 </style>

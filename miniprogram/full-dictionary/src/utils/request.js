@@ -16,18 +16,22 @@ request.interceptors.request.use((request) => {
 request.interceptors.response.use(
   (response, promise) => {
     my.hideLoading()
-    let resCode = response.data.code
-    console.log(response)
+    console.log('responseresponse===>>', typeof response.data)
+    // let responseData = JSON.parse(response.data)
+    let responseDataFormat = JSON.stringify(response.data)
+    let toObjData = JSON.parse(responseDataFormat)
+    let resCode = toObjData.code
+    console.log('responseresponseresponseresponse', toObjData)
     if (resCode !== 200) {
       my.showToast({
         content: '服务器异常，请稍后重试',
         type: 'fail',
         duration: 2000
       })
-      return promise.reject(response.data)
+      return promise.reject(toObjData)
     }
     // my.hideLoading()
-    return promise.resolve(response.data)
+    return promise.resolve(toObjData)
   },
   (err, promise) => {
     // 状态为0 网络错误
