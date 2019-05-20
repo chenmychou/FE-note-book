@@ -1,10 +1,7 @@
 import formatDate from '../utils/formatDate'
 const mongoose = require('mongoose')
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 3811a7220ac0c6b9c7dc3c7ca28b17d34692aec3
 const Schema = mongoose.Schema
 const UserSchema = new Schema({
   Name: {

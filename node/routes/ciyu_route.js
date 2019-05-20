@@ -17,6 +17,7 @@ router.post('/', async(ctx, next) => {
 router.post('/addCiYu', async(ctx, next) => {
     let ci = ctx.request.body.ciYu // 词语
     let explanation = ctx.request.body.explanation // 解释
+    console.log('addCiYuaddCiYu', ci, explanation, ctx.request.body)
     if (!ci || !explanation) {
         ctx.body = {
             code: 401,

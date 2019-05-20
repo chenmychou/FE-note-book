@@ -1,5 +1,5 @@
 module.exports = {
-    port: 9000,
+    port: 8888,
     dataBase: 'mongodb://localhost:27017/dictionary',
     collectionCiYu: 'ci_yu',
     collectionWords: 'words',
