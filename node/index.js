@@ -9,7 +9,25 @@ const redis = require('redis')
 const client = redis.createClient()
 const app = new Koa()
 const koaBody = require('koa-body');
-
+app.use(koaBody({
+    multipart: true,
+    json: true,
+    form: true,
+    text: true,
+    formLimit:"3mb",
+    jsonLimit:"3mb",
+    textLimit:"3mb"
+}));
+// app.use(koaBody({
+//     multipart: true,
+//     formidable: {
+//         maxFileSize: 200*1024*1024    // 设置上传文件大小最大限制，默认2M
+//     },
+//     formLimit:"3mb",
+//     jsonLimit:"3mb",
+//     textLimit:"3mb",
+//     enableTypes: ['json', 'form', 'text']
+// }));
 
 mongoose.set('useNewUrlParser', true); 
 mongoose.set('useFindAndModify', false);
@@ -35,16 +53,7 @@ app.use(cors());
 // app.use(bodyParser());
 // app.use(body_parser.json({limit:'50mb'}));
 // app.use(body_parser.urlencoded({limit:'50mb',extended:true}));
-app.use(koaBody({
-    multipart: true,
-    formidable: {
-        maxFileSize: 200*1024*1024    // 设置上传文件大小最大限制，默认2M
-    },
-    formLimit:"3mb",
-    jsonLimit:"3mb",
-    textLimit:"3mb",
-    enableTypes: ['json', 'form', 'text']
-}));
+
 // app.use(bodyParser({
 //     formLimit:"3mb",
 //     jsonLimit:"3mb",
